@@ -1,16 +1,35 @@
 import React, {Component} from 'react';
-import {AppRegistry, Text, Image, View} from 'react-native';
+import {AppRegistry, Text, View} from 'react-native';
 
-export default class HelloWorldApp extends Component {
+class BlinkyBlink extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {showText: true};
+
+    // Toggle the state every second
+    setInterval(() => {
+      this.setState(previousState => {
+        return { showText: !previousState.showText };
+      });
+    }, 1000);
+  }
+
   render() {
-    let pic = {
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
-    };
+    let display = this.state.showText ? this.props.name : ' ';
     return (
-      <View style={{marginTop: 20}}>
-        <Text style={{margin: 20}}>Hello World</Text>
-        <Image source={pic} style={{width: 193, height: 110}}/>
-    </View>
+      <Text>{display}</Text>
+    );
+  }
+}
+
+export default class LotsOfGreetings extends Component {
+  render() {
+    return (
+      <View>
+        <BlinkyBlink name='Rexxar' />
+        <BlinkyBlink name='Jaina' />
+        <BlinkyBlink name='Valeera' />
+      </View>
     );
   }
 }
