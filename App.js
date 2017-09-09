@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, Text, View} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View} from 'react-native';
 
 class BlinkyBlink extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class BlinkyBlink extends Component {
   render() {
     let display = this.state.showText ? this.props.name : ' ';
     return (
-      <Text>{display}</Text>
+      <Text style={styles.bigblue}>{display}</Text>
     );
   }
 }
@@ -33,3 +33,11 @@ export default class LotsOfGreetings extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  bigblue: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 30,
+  }
+});
