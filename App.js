@@ -1,43 +1,35 @@
-import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { Image, ScrollView, Text, View } from 'react-native';
 
-class BlinkyBlink extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {showText: true};
-
-    // Toggle the state every second
-    setInterval(() => {
-      this.setState(previousState => {
-        return { showText: !previousState.showText };
-      });
-    }, 1000);
-  }
-
+class AwkwardScrollingImageWithText extends Component {
   render() {
-    let display = this.state.showText ? this.props.name : ' ';
     return (
-      <Text style={styles.bigblue}>{display}</Text>
+      <ScrollView>
+        <Image
+          source={{uri: 'https://i.chzbgr.com/full/7345954048/h7E2C65F9/'}}
+          style={{margin: 100, width: 320, height:180}}
+        />
+        <Text>
+          On iOS, a React Native ScrollView uses a native UIScrollView.
+          On Android, it uses a native ScrollView.
+
+          On iOS, a React Native Image uses a native UIImageView.
+          On Android, it uses a native ImageView.
+
+          React Native wraps the fundamental native components, giving you
+          the performance of a native app, plus the clean design of React.
+        </Text>
+      </ScrollView>
     );
   }
 }
 
-export default class LotsOfGreetings extends Component {
+export default class Scrolling extends Component {
   render() {
     return (
       <View>
-        <BlinkyBlink name='Rexxar' />
-        <BlinkyBlink name='Jaina' />
-        <BlinkyBlink name='Valeera' />
+        <AwkwardScrollingImageWithText/>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  bigblue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 30,
-  }
-});
